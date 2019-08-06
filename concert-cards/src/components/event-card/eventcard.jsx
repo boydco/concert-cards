@@ -29,12 +29,6 @@ export const EventCard = props => {
     return buildDate;
   }
 
-  const cleanFormattedDate = () => {
-    let rawFormattedDate = getEventDateMomentBuild();
-    let fullFormattedDate = moment(rawFormattedDate).format('MMMM Do, YYYY');
-    return <span className="event-info-date">{fullFormattedDate}</span>
-  }
-
   const cleanIconDate = () => {
      let rawIconDate = getEventDateMomentBuild();
      let formattedDay = moment(rawIconDate).format('ddd');
@@ -43,16 +37,22 @@ export const EventCard = props => {
      return <div className="event-date"><p className="event-date-icon-day">{formattedDay}</p>{cleanMonth} . {cleanDate}</div>;
    }
 
+  const cleanFormattedDate = () => {
+    let rawFormattedDate = getEventDateMomentBuild();
+    let fullFormattedDate = moment(rawFormattedDate).format('ddd MMMM Do, YYYY');
+    return <span className="event-info-date">{fullFormattedDate}</span>
+  }
+
    const cleanEventTime = () => {
      let rawEventTime = getEventDateMomentBuild();
      let cleanEventTime = moment(rawEventTime).format('h:mmA')
-     return <p>{cleanEventTime}</p>;
+     return <span>{cleanEventTime}</span>;
    }
 
    const cleanDoorsTime = () => {
      let rawDoorsTime = getEventDoorsMomentBuild();
      let cleanDoorsTime = moment(rawDoorsTime).format('h:mmA')
-     return <p>{cleanDoorsTime}</p>;
+     return <span>{cleanDoorsTime}</span>;
    }
 
 
@@ -66,14 +66,20 @@ export const EventCard = props => {
         <div className="event-date-icon">{cleanIconDate()}</div>
         <div className="event-info">
             {cleanFormattedDate()}
-            <span>Doors:  {cleanDoorsTime()}</span>
-            <span>Show: {cleanEventTime()}</span>
+            <div className="event-time">
+              <p>Doors:  {cleanDoorsTime()}</p>
+              <p>Show: {cleanEventTime()}</p>
+            </div>
+            <p>{props.event.venue.name} | <span className="venue-location">{props.event.venue.city}, {props.event.venue.state}</span></p>
+            <p>Ages {props.event.agerestriction} and older</p>
 
-            status: {props.event.status}
-            price display: {props.event.prices.pricedisplay}
-            venue : {props.event.venue.name}
-            age limit: ages {props.event.agerestriction} and older
-            facebookeventid: {props.event.facebookeventid}
+
+            <div className="ticket-box">
+              {props.event.prices.pricedisplay}
+              <div className="ticket-button">
+                <a target="_blank" className="buy-tix-btn" href={props.event.eventurl}>Buy Tickets</a>
+              </div>
+            </div>
         </div>
       </div>
     </div>

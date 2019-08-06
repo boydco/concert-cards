@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #fff;
-  padding: 20px;
+  padding: 10px;
   cursor: pointer;
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
@@ -29,6 +29,8 @@
 
 .event-info-container {
   z-index: 10;
+  width: 80%;
+  min-height: 250px;
 }
 
 .event-info-container h2 {
@@ -37,7 +39,16 @@
 }
 
 .event-info {
-  /* display: none; */
+  display: none;
+  position: absolute;
+  bottom: 1.2em;
+  left: 1.2em;
+  right: 1em;
+}
+
+.event-info p {
+  margin: 2px 0;
+  font-size: 12.5px;
 }
 
 .event-date-icon {
@@ -58,12 +69,38 @@
   margin-bottom: 4px;
 }
 
+.event-info-date {
+  font-size: 15px;
+}
+
 .prefix-text {
   margin-top: 18px;
   display: block;
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+.ticket-box {
+  position: absolute;
+  bottom: 0;
+  right: .25em;
+  text-align: center;
+  font-size: 16px;
+}
+
+.buy-tix-btn {
+  background: #e4c9ab;
+  color: #000;
+  text-decoration: none;
+  display: block;
+  text-transform: uppercase;
+  padding: 6px 8px;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  box-shadow: 1px 1px 4px rgba(17, 17, 17, 0.61);
 }
 
 .card-container:hover {
@@ -83,6 +120,7 @@
 .card-container:hover .event-info-container {
   border: solid 8px #fff;
   padding: 8px;
+  width: auto;
 }
 
 .card-container:hover .event-info {
