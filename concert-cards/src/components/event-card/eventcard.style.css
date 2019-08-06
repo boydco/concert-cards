@@ -7,7 +7,7 @@
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+  transition: transform 0.33s ease-out;
   background-size: cover;
   background-position: center;
   text-align: left;
@@ -74,7 +74,7 @@
 }
 
 .prefix-text {
-  margin-top: 18px;
+  margin-top: 8px;
   display: block;
   font-size: 13px;
   text-transform: uppercase;

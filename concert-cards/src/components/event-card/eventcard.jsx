@@ -1,7 +1,18 @@
 import React from 'react'
 import moment from 'moment'
+import { Button } from "@ticketmaster/aurora";
 
 import './eventcard.style.css';
+
+const styles = {
+  container: {
+    fontFamily: "sans-serif",
+    textAlign: "center"
+  },
+  buttons: {
+    display: "flex"
+  }
+};
 
 export const EventCard = props => {
 
@@ -77,6 +88,11 @@ export const EventCard = props => {
             <div className="ticket-box">
               {props.event.prices.pricedisplay}
               <div className="ticket-button">
+                <Button variant="outline">
+                   <span role="img" aria-label="tada">
+                     🎉
+                   </span>
+                 </Button>
                 <a target="_blank" className="buy-tix-btn" href={props.event.eventurl}>Buy Tickets</a>
               </div>
             </div>

@@ -3,9 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ticketmaster/aurora": "^3.101.2",
+    "classnames": "^2.2.6",
     "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react-transition-group": "3.0.0",
+    "styled-components": "^4.3.2",
+    "typescript": "^3.5.3"
   },
   "devDependencies": {
     "react-scripts": "3.0.1"
