@@ -37,7 +37,7 @@
 }
 
 .event-info {
-  display: none;
+  /* display: none; */
 }
 
 .event-date-icon {
@@ -83,6 +83,10 @@
 .card-container:hover .event-info-container {
   border: solid 8px #fff;
   padding: 8px;
+}
+
+.card-container:hover .event-info {
+  display: block;
 }
 
 .card-container:hover .event-date-icon {

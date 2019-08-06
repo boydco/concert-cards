@@ -5,24 +5,55 @@ import './eventcard.style.css';
 
 export const EventCard = props => {
 
+  const getEventDateMomentBuild = () => {
+    let date = props.event.dates.startdate;
+    let year = date.substring(0,4);
+    let rawMonth = date.substring(4,6);
+    let rawDay = date.substring(6,8);
+    let rawEventHours = date.substring(8,10);
+    let rawEventMin = date.substring(10,12);
+    let rawEventTime = date.substring(8,12);
+    let buildDate = year + '-' + rawMonth + '-' + rawDay + 'T' + rawEventHours + ':' + rawEventMin + ':00';
+    return buildDate;
+  }
 
+  const getEventDoorsMomentBuild = () => {
+    let date = props.event.dates.doorsdate;
+    let year = date.substring(0,4);
+    let rawMonth = date.substring(4,6);
+    let rawDay = date.substring(6,8);
+    let rawEventHours = date.substring(8,10);
+    let rawEventMin = date.substring(10,12);
+    let rawEventTime = date.substring(8,12);
+    let buildDate = year + '-' + rawMonth + '-' + rawDay + 'T' + rawEventHours + ':' + rawEventMin + ':00';
+    return buildDate;
+  }
 
- const cleanData = () => {
-   let date = props.event.dates.startdate;
+  const cleanFormattedDate = () => {
+    let rawFormattedDate = getEventDateMomentBuild();
+    let fullFormattedDate = moment(rawFormattedDate).format('MMMM Do, YYYY');
+    return <span className="event-info-date">{fullFormattedDate}</span>
+  }
 
-   let year = date.substring(0,4);
-   let rawMonth = date.substring(4,6);
-   let rawDay = date.substring(6,8);
-   let rawEventHours = date.substring(8,10);
-   let rawEventMin = date.substring(10,12);
-   let rawEventTime = date.substring(8,12);
-   let cleanMonth = (rawMonth[0] === '0') ? rawMonth.substr(1) : rawMonth;
-   let cleanDate = (rawDay[0] === '0') ? rawDay.substr(1) : rawDay;
-   let buildDate = year + '-' + rawMonth + '-' + rawDay + 'T' + rawEventHours + ':' + rawEventMin + ':00';
-   let formattedDay = moment(buildDate).format('ddd');
+  const cleanIconDate = () => {
+     let rawIconDate = getEventDateMomentBuild();
+     let formattedDay = moment(rawIconDate).format('ddd');
+     let cleanMonth = moment(rawIconDate).month();
+     let cleanDate = moment(rawIconDate).date();
+     return <div className="event-date"><p className="event-date-icon-day">{formattedDay}</p>{cleanMonth} . {cleanDate}</div>;
+   }
 
-   return <div className="event-date"><p className="event-date-icon-day">{formattedDay}</p>{cleanMonth} . {cleanDate}</div>;
- }
+   const cleanEventTime = () => {
+     let rawEventTime = getEventDateMomentBuild();
+     let cleanEventTime = moment(rawEventTime).format('h:mmA')
+     return <p>{cleanEventTime}</p>;
+   }
+
+   const cleanDoorsTime = () => {
+     let rawDoorsTime = getEventDoorsMomentBuild();
+     let cleanDoorsTime = moment(rawDoorsTime).format('h:mmA')
+     return <p>{cleanDoorsTime}</p>;
+   }
 
 
 
@@ -32,11 +63,13 @@ export const EventCard = props => {
       <div className="event-info-container">
         <p className="prefix-text">{props.event.prefixtext}</p>
         <h2>{props.event.eventname}</h2>
-        <div className="event-date-icon">{cleanData()}</div>
+        <div className="event-date-icon">{cleanIconDate()}</div>
         <div className="event-info">
+            {cleanFormattedDate()}
+            <span>Doors:  {cleanDoorsTime()}</span>
+            <span>Show: {cleanEventTime()}</span>
+
             status: {props.event.status}
-            start date: {props.event.dates.startdate}
-            doors: {props.event.dates.doorsdate}
             price display: {props.event.prices.pricedisplay}
             venue : {props.event.venue.name}
             age limit: ages {props.event.agerestriction} and older
