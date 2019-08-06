@@ -7,7 +7,7 @@ export const EventList = props => {
   return (
     <div className="event-list">
       {props.events.map(event => (
-        <EventCard key="event.eventid" event={event}></EventCard>
+        <EventCard key={event.eventid} event={event}></EventCard>
       ))}
     </div>
   )
