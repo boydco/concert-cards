@@ -14,17 +14,8 @@
   min-height: 250px;
 }
 
-.card-container:hover {
-  transform: scale(1.05);
-}
-
-.card-img img {
-  max-width: 220px;
-}
-
 .card-container:after {
   content:"\A";
-
 }
 
 .card-overlay {
@@ -45,6 +36,10 @@
   font-size: 20px;
 }
 
+.event-info {
+  display: none;
+}
+
 .event-date-icon {
   width: 15%;
   position: absolute;
@@ -63,12 +58,6 @@
   margin-bottom: 4px;
 }
 
-
-
-.event-info {
-  display: none;
-}
-
 .prefix-text {
   margin-top: 18px;
   display: block;
@@ -77,6 +66,9 @@
   letter-spacing: 1px;
 }
 
+.card-container:hover {
+  transform: scale(1.05);
+}
 
 .card-container:hover:after {
   content:"\A";
