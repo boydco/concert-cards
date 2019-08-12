@@ -4,15 +4,6 @@ import { Button } from "@ticketmaster/aurora";
 
 import './eventcard.style.css';
 
-const styles = {
-  container: {
-    fontFamily: "sans-serif",
-    textAlign: "center"
-  },
-  buttons: {
-    display: "flex"
-  }
-};
 
 export const EventCard = props => {
 
